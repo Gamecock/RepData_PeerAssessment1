@@ -54,6 +54,12 @@ Zero is a valid step count for a 5 minute window, but unlikely for a day.
 
 ```r
 daily <- activities %>% ungroup() %>% group_by(date) %>% summarise(daily = sum(steps, na.rm = TRUE)) %>% filter(daily!= 0)
+qplot(daily$daily, bins = 30)
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+```r
 step_mean <- mean(daily$daily, na.rm = TRUE)
 step_median <- median(daily$daily, na.rm = TRUE)
 ```
@@ -113,4 +119,4 @@ ggplot(data = segment, aes(x = factor(tod), y = steps, group = day))+geom_line(a
 ```
 
 ![](PA1_template_files/figure-html/days-1.png)<!-- -->
-Thursday and Friday look more like a weekend in the AM than  Monday, Tuesday, Wednesday
+Thursday and Friday look more like a weekend in the AM than  Monday, Tuesday, Wednesday.  

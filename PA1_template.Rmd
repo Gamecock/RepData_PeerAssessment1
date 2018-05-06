@@ -41,6 +41,7 @@ As you look at the summary, you can see there are a lot of zero's.
 Zero is a valid step count for a 5 minute window, but unlikely for a day.
 ```{r} 
 daily <- activities %>% ungroup() %>% group_by(date) %>% summarise(daily = sum(steps, na.rm = TRUE)) %>% filter(daily!= 0)
+qplot(daily$daily, bins = 30)
 step_mean <- mean(daily$daily, na.rm = TRUE)
 step_median <- median(daily$daily, na.rm = TRUE)
 ```
